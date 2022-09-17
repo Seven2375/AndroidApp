@@ -1,6 +1,5 @@
 package com.example.day01_c;
 
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -8,43 +7,30 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BannerAdapter extends PagerAdapter {
 
-    private final Context mcontext;
-    private final List<imageInfo> imagelist;
 
-    private List<ImageView> viewList = new ArrayList<>();
+    private List<Integer> images = null;
 
-    public BannerAdapter(List<imageInfo> list,Context mcontext) {
-        this.mcontext = mcontext;
-        this.imagelist = list;
-
-        for(imageInfo info:list){
-            ImageView view = new ImageView(mcontext);
-            view.setLayoutParams(new ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-            ));
-            view.setImageResource(info.image);
-            viewList.add(view);
-        }
-
+    public void setData(List<Integer> images) {
+        this.images = images;
     }
 
     @Override
     public int getCount() {
-        return imagelist.size();
+        return Integer.MAX_VALUE;
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        ImageView item = viewList.get(position);
-        container.addView(item);
-        return  item;
+        int realPosition = position % images.size();
+        ImageView imageView = new ImageView(container.getContext());
+        imageView.setImageResource(images.get(realPosition));
+        container.addView(imageView);
+        return  imageView;
     }
 
     @Override
