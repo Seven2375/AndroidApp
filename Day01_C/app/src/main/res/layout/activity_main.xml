@@ -104,6 +104,7 @@
         </LinearLayout>
 
         <CheckBox
+            android:id="@+id/cb_login_savepwd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/login_linear2"

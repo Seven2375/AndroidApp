@@ -24,9 +24,6 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         ed_username = findViewById(R.id.et_zhuce_username);
         ed_pwd = findViewById(R.id.et_zhuce_pwd);
 
-
-        preferences = getSharedPreferences(username, Context.MODE_PRIVATE);
-
         findViewById(R.id.btn_zhuce).setOnClickListener(this);
     }
 
@@ -34,7 +31,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         username = ed_username.getText().toString();
         pwd = ed_pwd.getText().toString();
-
+        preferences = getSharedPreferences(username, Context.MODE_PRIVATE);
         if (TextUtils.isEmpty(username)){
             Toast.makeText(this, "注册失败！账号不能为空", Toast.LENGTH_SHORT).show();
         }else {
