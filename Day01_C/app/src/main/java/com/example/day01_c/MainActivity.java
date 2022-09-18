@@ -1,15 +1,37 @@
 package com.example.day01_c;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.accounts.Account;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.day01_c.MainActivity2;
+import com.example.day01_c.MainActivity3;
+import com.example.day01_c.R;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -32,6 +54,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.btn_login_zhuce).setOnClickListener(this);
         findViewById(R.id.btn_login).setOnClickListener(this);
+
+
+
+        OkHttpClient okHttpClient = new OkHttpClient();
+        //2.通过new FormBody()调用build方法,创建一个RequestBody,可以用add添加键值对
+        RequestBody requestBody = new FormBody.Builder().add("username","18898759740").add("pwd","123456").build();
+        //3.创建Request对象，设置URL地址，将RequestBody作为post方法的参数传入
+        Request request = new Request.Builder().url("http://app.qianwang1688.com/MallApi/login/app_pwd_login").post(requestBody).build();
+        //4.创建一个call对象,参数就是Request请求对象
+        Call call = okHttpClient.newCall(request);
+        //5.请求加入调度,重写回调方法
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+                Log.e("aaaaresponse:","response : " + response.body().string());
+
+                String body2 = response.body().string();
+                Gson gson = new Gson();
+
+                Avo avoobj= gson.fromJson(body2,Avo.class);
+
+                String kk = avoobj.getData().get("token");
+
+                Log.e("wwwwww",kk);
+            }
+        });
+
     }
 
     private void reload() {
@@ -47,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_login_zhuce:
-                startActivity(new Intent(this,MainActivity2.class));
+                startActivity(new Intent(this, MainActivity2.class));
                 break;
             case R.id.btn_login:
                 String u = ed_username.getText().toString();
@@ -64,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     String hello = String.format("%s,欢迎登录", username);
                     Toast.makeText(this,hello,Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(this,MainActivity3.class));
+                    startActivity(new Intent(this, MainActivity3.class));
                 }else{
                     ed_pwd.setText("");
                     Toast.makeText(this,"账号或密码错误",Toast.LENGTH_SHORT).show();
