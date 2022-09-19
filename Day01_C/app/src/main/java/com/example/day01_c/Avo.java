@@ -12,6 +12,15 @@ public class Avo {
         this.data = data;
     }*/
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    private String code;
     private int status;
     private String info;
     private String url;

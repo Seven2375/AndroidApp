@@ -1,9 +1,6 @@
 package com.example.day01_c;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.accounts.Account;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,16 +11,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.day01_c.MainActivity2;
-import com.example.day01_c.MainActivity3;
-import com.example.day01_c.R;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.gson.Gson;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
-import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -39,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private CheckBox cb_savelogin;
     private String username,pwd;
     private SharedPreferences config;
+    private String kk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +52,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         OkHttpClient okHttpClient = new OkHttpClient();
         //2.通过new FormBody()调用build方法,创建一个RequestBody,可以用add添加键值对
-        RequestBody requestBody = new FormBody.Builder().add("username","18898759740").add("pwd","123456").build();
+        RequestBody requestBody = new FormBody.Builder().add("username","admin").add("passwrod","123456").build();
         //3.创建Request对象，设置URL地址，将RequestBody作为post方法的参数传入
-        Request request = new Request.Builder().url("http://app.qianwang1688.com/MallApi/login/app_pwd_login").post(requestBody).build();
+        //Request request = new Request.Builder().url("http://app.qianwang1688.com/MallApi/login/app_pwd_login").post(requestBody).build();
+        Request request = new Request.Builder().url("https://w2code.com/api/register").post(requestBody).build();
         //4.创建一个call对象,参数就是Request请求对象
         Call call = okHttpClient.newCall(request);
         //5.请求加入调度,重写回调方法
@@ -71,17 +65,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-
-                Log.e("aaaaresponse:","response : " + response.body().string());
-
-                String body2 = response.body().string();
+                Log.e("data",response.body().string());
+                //获取json数据 传入到body
+                String body = response.body().string();
+                //创建一个gson
                 Gson gson = new Gson();
+                //新建一个Avo的Bean函数
+                Avo avoobj= gson.fromJson(body,Avo.class);
 
-                Avo avoobj= gson.fromJson(body2,Avo.class);
+                kk = avoobj.getCode();
 
-                String kk = avoobj.getData().get("token");
-
-                Log.e("wwwwww",kk);
             }
         });
 
@@ -115,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }else{
                         noSavePwd();
                     }
-                    String hello = String.format("%s,欢迎登录", username);
+                    String hello = String.format("%s,欢迎登录", kk);
                     Toast.makeText(this,hello,Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(this, MainActivity3.class));
                 }else{
