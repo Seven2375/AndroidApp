@@ -23,7 +23,133 @@
         android:id="@+id/banner_image"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
+        android:layout_below="@+id/l1"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp" />
+    <LinearLayout
+        android:id="@+id/points"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="220dp">
+
+        <!--<RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/point_of"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:checked="true"
+            android:button="@drawable/point_of"/>-->
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_below="@+id/banner_image"
         android:layout_margin="10dp"
-        android:layout_below="@+id/l1"/>
+        android:background="@drawable/shape_login">
+
+        <LinearLayout
+            android:id="@+id/k1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="20dp">
+
+            <EditText
+                android:id="@+id/et_from_city"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:maxLength="3"
+                android:lines="1"
+                android:hint="from"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fly"/>
+            <EditText
+                android:id="@+id/et_to_city"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:maxLength="3"
+                android:lines="1"
+                android:layout_height="wrap_content"
+                android:hint="to"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/k2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="20dp"
+            android:layout_below="@id/k1">
+
+            <EditText
+                android:id="@+id/et_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="    Date"
+                android:textStyle="bold"
+                android:focusable="false"
+                android:textSize="30sp"/>
+
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/k3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="20dp"
+            android:layout_below="@id/k2">
+
+            <RadioButton
+                android:id="@+id/rb_ertong"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="带儿童"
+                android:textSize="25sp"/>
+            <RadioButton
+                android:id="@+id/rb_yinger"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="带婴儿"
+                android:textSize="25sp"/>
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_jipiao"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/k3"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/shape_btn_login"
+            android:text="搜索"
+            android:textSize="19sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+
+    </RelativeLayout>
 
 </RelativeLayout>

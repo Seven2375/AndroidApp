@@ -3,10 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidApp/Day01_C/app/src/main/res/layout/activity_apiactivity.xml" value="0.20697463768115942" />
+        <entry key="..\:/AndroidApp/Day01_C/app/src/main/res/drawable/point_of.xml" value="0.1315" />
+        <entry key="..\:/AndroidApp/Day01_C/app/src/main/res/drawable/shape_point_no.xml" value="0.1315" />
+        <entry key="..\:/AndroidApp/Day01_C/app/src/main/res/drawable/shape_point_yes.xml" value="0.1315" />
+        <entry key="..\:/AndroidApp/Day01_C/app/src/main/res/layout/activity_apiactivity.xml" value="0.1" />
         <entry key="..\:/AndroidApp/Day01_C/app/src/main/res/layout/activity_main.xml" value="0.20697463768115942" />
         <entry key="..\:/AndroidApp/Day01_C/app/src/main/res/layout/activity_main2.xml" value="0.20697463768115942" />
-        <entry key="..\:/AndroidApp/Day01_C/app/src/main/res/layout/activity_main3.xml" value="0.20697463768115942" />
+        <entry key="..\:/AndroidApp/Day01_C/app/src/main/res/layout/activity_main3.xml" value="0.2" />
+        <entry key="..\:/AndroidApp/Day01_C/app/src/main/res/layout/activity_main4.xml" value="0.19610507246376813" />
+        <entry key="..\:/AndroidApp/Day01_C/app/src/main/res/layout/activity_test.xml" value="0.19610507246376813" />
         <entry key="..\:/Day01_C/app/src/main/res/drawable/shape_btn_login.xml" value="0.1355" />
         <entry key="..\:/Day01_C/app/src/main/res/drawable/shape_login.xml" value="0.1355" />
         <entry key="..\:/Day01_C/app/src/main/res/layout/activity_main.xml" value="0.264" />

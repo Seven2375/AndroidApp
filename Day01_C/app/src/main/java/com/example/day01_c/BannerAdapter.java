@@ -42,5 +42,8 @@ public class BannerAdapter extends PagerAdapter {
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view==object;
     }
+    public int getRealSize(){
+        return images.size();
+    }
 
 }

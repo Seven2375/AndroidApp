@@ -49,35 +49,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_login).setOnClickListener(this);
 
 
-
-        OkHttpClient okHttpClient = new OkHttpClient();
-        //2.通过new FormBody()调用build方法,创建一个RequestBody,可以用add添加键值对
-        RequestBody requestBody = new FormBody.Builder().add("username","admin").add("passwrod","123456").build();
-        //3.创建Request对象，设置URL地址，将RequestBody作为post方法的参数传入
-        //Request request = new Request.Builder().url("http://app.qianwang1688.com/MallApi/login/app_pwd_login").post(requestBody).build();
-        Request request = new Request.Builder().url("https://w2code.com/api/register").post(requestBody).build();
-        //4.创建一个call对象,参数就是Request请求对象
-        Call call = okHttpClient.newCall(request);
-        //5.请求加入调度,重写回调方法
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-            }
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Log.e("data",response.body().string());
-                //获取json数据 传入到body
-                String body = response.body().string();
-                //创建一个gson
-                Gson gson = new Gson();
-                //新建一个Avo的Bean函数
-                Avo avoobj= gson.fromJson(body,Avo.class);
-
-                kk = avoobj.getCode();
-
-            }
-        });
-
     }
 
     private void reload() {
